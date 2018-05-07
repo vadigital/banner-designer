@@ -104,7 +104,7 @@ function switchBannerType() {
     $('.custom-height, .custom-width').val('');
 
     $('.device-toggle .option').removeClass('is-active');
-    $('#page').removeClass('is-desktop-banner is-mobile-banner is-custom-banner');
+    $('#page').removeClass('is-desktop-banner is-mobile-banner is-custom-banner is-full-width-desktop-banner');
     $('#page').addClass('is-' + deviceType + '-banner');
     $(this).addClass('is-active');
     switchCharacterLimit(deviceType)

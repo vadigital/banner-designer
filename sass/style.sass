@@ -94,6 +94,7 @@ body
   background: #f7f7f7
   overflow: hidden
   border: 2px dashed #cdcdcd
+  box-sizing: border-box
   &.is-desktop-banner
     width: $desktop-banner-width
     height: $desktop-banner-height
@@ -137,8 +138,11 @@ body
       margin: 0 auto
       .search
         float: left
-        width: 328px
-        height: 592px
+        width: 327px
+        height: 595px
+        border: 1px #dedede solid
+        border-top: 0
+        opacity: 0.9
       .banner-text
         position: relative
         float: right
@@ -251,7 +255,7 @@ body
             width: 100%
             text-align: center
       .select-logos
-        display: none !important
+        display: none
 
   &.is-custom-banner
     width: 600px
@@ -260,8 +264,35 @@ body
     .banner
       width: 600px
       height: 400px
-    .container, .select-logos
-      display: none !important
+      .container,
+      .select-logos
+        display: none !important
+
+  &.is-full-width-desktop-banner
+    width: 100%
+    height: 600px
+    border: 2px dashed #cdcdcd
+    .banner
+      width: 100%
+      height: 600px
+      .container
+        text-align: center
+        width: 100%
+        .search
+          display: none
+        .banner-text
+          display: inline-block
+          float: none
+          width: 70%
+          h4
+            position: relative
+            bottom: auto
+            top: 340px
+      .select-logos
+        position: relative
+        top: auto
+        left: auto
+        margin: -235px auto 0
 
   &.has-image
     .edit-image,
