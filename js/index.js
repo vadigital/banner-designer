@@ -107,9 +107,19 @@ function switchBannerType() {
     $('#page').removeClass('is-desktop-banner is-mobile-banner is-custom-banner is-full-width-desktop-banner');
     $('#page').addClass('is-' + deviceType + '-banner');
     $(this).addClass('is-active');
-    switchCharacterLimit(deviceType)
+    switchCharacterLimit(deviceType);
+    checkIfResponsive(deviceType);
   });
 }
+
+function checkIfResponsive(device) {
+  if (device == 'full-width-desktop') {
+    $("#banner-image").css("width","100%");
+  } else {
+    $("#banner-image").css("width","auto");
+  }
+}
+
 
 function switchCharacterLimit(device) {
   $('.form-fields .style-fields').show();
