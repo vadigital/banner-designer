@@ -104,7 +104,7 @@ function switchBannerType() {
     $('.custom-height, .custom-width').val('');
 
     $('.device-toggle .option').removeClass('is-active');
-    $('#page').removeClass('is-desktop-banner is-mobile-banner is-custom-banner is-full-width-desktop-banner');
+    $('#page').removeClass('is-desktop-banner is-mobile-banner is-custom-banner is-responsive-desktop-banner is-responsive-mobile-banner');
     $('#page').addClass('is-' + deviceType + '-banner');
     $(this).addClass('is-active');
     switchCharacterLimit(deviceType);
@@ -113,7 +113,7 @@ function switchBannerType() {
 }
 
 function checkIfResponsive(device) {
-  if (device == 'full-width-desktop') {
+  if (device == 'responsive-desktop') {
     $("#banner-image").css("width","100%");
   } else {
     $("#banner-image").css("width","auto");

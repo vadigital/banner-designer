@@ -268,7 +268,8 @@ body
       .select-logos
         display: none !important
 
-  &.is-full-width-desktop-banner
+  &.is-responsive-desktop-banner,
+  &.is-responsive-mobile-banner
     width: 100%
     height: 600px
     border: 2px dashed #cdcdcd
@@ -293,6 +294,18 @@ body
         top: auto
         left: auto
         margin: -235px auto 0
+    
+    &.is-responsive-mobile-banner
+      width: 640px
+      .banner
+        .container
+          .banner-text
+            width: 90%
+            h2
+              font-size: 32px
+            h4
+              top: 222px
+
 
   &.has-image
     .edit-image,
