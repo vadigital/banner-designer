@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     switchBannerType()
 
-    // Listen to form fields
+  // Listen to form fields
     $('.primary-headline').keyup(function() {
       var primaryHeadline = $(this).val();
       $('.banner-text h1').html(primaryHeadline);
@@ -11,11 +11,16 @@ $(document).ready(function() {
       var secondaryHeadline = $(this).val();
       $('.banner-text h2').html(secondaryHeadline);
     });
-    $('.terms-and-conditions').keyup(function() {
+    $('.desktop-terms-and-conditions').keyup(function() {
       var termsConditions = $(this).val();
-      $('.banner-text h4').html(termsConditions);
+      $('.hidden-xs h4').html(termsConditions);
+    });
+  $('.mobile-terms-and-conditions').keyup(function() {
+      var termsConditions = $(this).val();
+      $('.hidden-l h4').html(termsConditions);
     });
 
+	
     // Listen to custom banner height
     $('.custom-height').keyup(function() {
       var customHeight = $(this).val();
@@ -28,6 +33,7 @@ $(document).ready(function() {
 
     // Save banner image only
     $('.save-image-only').click(function() {
+		     $('.beta-overlay-bg').hide();
       $('.banner .banner-text, .edit-image, .filter').attr('data-html2canvas-ignore',true);
       saveImage()
     });
@@ -113,7 +119,7 @@ function switchBannerType() {
 }
 
 function checkIfResponsive(device) {
-  if (device == 'responsive-desktop') {
+  if (device == 'mobile') {
     $("#banner-image").css("width","100%");
   } else {
     $("#banner-image").css("width","auto");
@@ -124,12 +130,12 @@ function checkIfResponsive(device) {
 function switchCharacterLimit(device) {
   $('.form-fields .style-fields').show();
   $('.form-fields .custom-fields').hide();
-  var primaryChars = 40;
+  var primaryChars = 120;
   var secondaryChars = 120;
 
   if (device == 'mobile') {
     var primaryChars = 40;
-    var secondaryChars = 40;
+    var secondaryChars = 120;
   }
 
   if (device == 'custom') {
@@ -147,18 +153,23 @@ function switchCharacterLimit(device) {
 
 function changeColor() {
   var headlineColor = $('.headline-color').val();
-  var termsColor = $('.terms-color').val();
-  $('.banner-text h1, .banner-text h2').css('color',headlineColor);
-  $('.banner-text h4').css('color',termsColor);
+  $('#page .banner #banner-image').css('object-position',headlineColor);
+  
+   
 }
+
 
 function readBanner(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     reader.onload = function(e) {
       $('#banner-image').attr('src', e.target.result);
+  
+      
+      $("#banner-image").attr('style', 'background-image:url(' + e.target.result + ')');
       $('#page').addClass('has-image');
     };
+    
     reader.readAsDataURL(input.files[0]);
   }
 }
